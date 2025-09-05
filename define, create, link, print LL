@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Define Node
+class Node {
+public:
+    int data;      // value
+    Node* next;    // pointer to next node
+
+    // Constructor
+    Node(int val) {
+        data = val;
+        next = nullptr;
+    }
+};
+
+int main() {
+    // Step 2: Create nodes
+    Node* first = new Node(10);
+    Node* second = new Node(20);
+    Node* third = new Node(30);
+
+    // Step 3: Link nodes together
+    first->next = second;
+    second->next = third;
+
+    // Step 4: Traverse (print the list)
+    Node* temp = first;   // start from first node
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next; // move to next node
+    }
+
+    return 0;
+}
