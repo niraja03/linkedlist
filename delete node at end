@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+public:
+    int data;
+    Node* next;
+    Node(int val) {
+        data = val;
+        next = nullptr;
+    }
+};
+
+Node* deletelast(Node* head) {
+    if(head== NULL ) {
+        return NULL;
+    }
+    if(head->next == NULL){
+        delete head;   // ✅ CHANGE 1: added delete to free memory
+        return NULL;   // ✅ CHANGE 2: earlier you only returned NULL (memory leak fixed)
+    }
+    Node* temp = head;
+    while(temp->next->next != NULL) {
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp->next = NULL; 
+
+    return head; //return new head 
+}
+
+int main() {
+    Node* head = new Node(2);
+    head->next = new Node(5);
+    head->next->next = new Node(4);
+    head->next->next->next = new Node(5);
+    
+    cout<<"Original list is this :"<< endl; 
+    Node* temp = head;
+    while(temp!= nullptr) {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+    cout << endl;
+
+    head = deletelast(head);   // ✅ CHANGE 3: call delete function
+
+    cout<<"After deleting last node :"<< endl; 
+    temp = head;
+    while(temp!= nullptr) {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+}
