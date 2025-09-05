@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+public:
+    int data;
+    Node* next;
+    Node(int val) {
+        data = val;
+        next =nullptr;
+    }
+};
+
+int main() {
+    Node* head = new Node(2);
+    head-> next = new Node(3);
+    head-> next->next = new Node(4);
+    head-> next->next->next = new Node(5);
+
+    int count =0; //initiates from 0
+    Node* temp = head;  //setting 1st term after setting index
+    while(temp!= nullptr) {
+        count++;
+        temp = temp-> next;
+    }
+    cout<<"length is :"<< count;
+    return 0;
+}
