@@ -81,10 +81,6 @@ int main() {
     cout << "Original list: ";
     print(head);
 
-    head = removek(head, 4);   // delete 4th node
-    cout << "After deleting 4th node: ";
-    print(head);
-
     head = deletelast(head);   // delete last node
     cout << "After deleting last node: ";
     print(head);
