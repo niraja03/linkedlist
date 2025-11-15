@@ -1,0 +1,60 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct Node
+{
+    int data;
+    Node* next;
+};
+Node* top = NULL;
+
+void push( int x)
+{
+    Node *newNode = new Node();
+    newNode->data = x;
+    newNode->next = top;
+    top = newNode;
+}
+
+void pop()
+{
+    if (top == NULL)
+    {
+        cout << "stack underflow" << endl;
+    }
+    else
+    {
+        Node *temp = top;
+        top = top->next;
+        delete temp;
+    }
+}
+
+int display()
+{
+    if (top == NULL)
+    {
+        cout << "stack is empty" << endl;
+        return -1;
+    }
+    else
+    {
+        Node *temp = top;
+        while (temp != NULL)
+        {
+            cout << temp->data<<endl;
+            temp = temp->next;
+        }
+    }
+}
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    display();
+    pop();
+    return 0;
+}
